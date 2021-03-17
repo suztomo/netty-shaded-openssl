@@ -1,4 +1,6 @@
-# The tests fail
+Test cases to run on ARM machine
+
+# With netty-tcnative 2.0.34.Final (used by grpc-netty-shaded 1.36.0) the tests fail
 
 ```
 ~/suztomo/netty-shaded-openssl$ mvn test -DtrimStackTrace=false
@@ -355,9 +357,33 @@ java.lang.IllegalArgumentException: Failed to load any of the given libraries: [
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
 ```
 
+# With netty-tcnative 2.0.36.Final (new) passes NettyPopenSSLTest
+
+https://github.com/netty/netty-tcnative/issues/552#issuecomment-781921125
+
+```
+~/suztomo/netty-shaded-openssl$ mvn test -Dtest=org.example.NettyOpenSSLTest
+...
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.NettyOpenSSLTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.282 s - in org.example.NettyOpenSSLTest
+[INFO]
+```
+
 # Netty-tcnative 2.0.34 does not have correct file
+
+The bad version (2.0.34)
 
 ```
 ~/suztomo/netty-shaded-openssl$ jar tf ~/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.34.Final/netty-tcnative-boringssl-static-2.0.34.Final.jar  |grep aarch
 META-INF/native/libnetty_tcnative_linux_aarch64.so
+```
+
+The good version (2.0.36)
+
+```
+~/suztomo/netty-shaded-openssl$ jar tf ~/.m2/repository/io/netty/netty-tcnative-boringssl-static/2.0.36.Final/netty-tcnative-boringssl-static-2.0.36.Final.jar  |grep aarch
+META-INF/native/libnetty_tcnative_linux_aarch_64.so
 ```
