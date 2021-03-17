@@ -30,6 +30,14 @@
       <version>4.1.52.Final</version>
     </dependency>
     <dependency>
+      <!-- From https://github.com/grpc/grpc-java/blob/v1.36.0/build.gradle#L179 and
+        Netty lets users to choose SSL implementation
+        https://netty.io/wiki/forked-tomcat-native.html#artifacts -->
+      <groupId>io.netty</groupId>
+      <artifactId>netty-tcnative-boringssl-static</artifactId>
+      <version>2.0.34.Final</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
