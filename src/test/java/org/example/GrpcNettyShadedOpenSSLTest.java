@@ -8,8 +8,9 @@ import org.junit.Test;
 public class GrpcNettyShadedOpenSSLTest
 {
     @Test
-    public void shouldCheckOpenSSLAvailability()
-    {
-        OpenSsl.isAvailable();
+    public void testOpenSSL() throws Throwable {
+        if (!OpenSsl.isAvailable()) {
+            throw OpenSsl.unavailabilityCause();
+        }
     }
 }

@@ -6,8 +6,9 @@ import org.junit.Test;
 public class NettyOpenSSLTest
 {
     @Test
-    public void shouldCheckOpenSSLAvailability()
-    {
-        OpenSsl.isAvailable();
+    public void testOpenSSL() throws Throwable {
+        if (!OpenSsl.isAvailable()) {
+            throw OpenSsl.unavailabilityCause();
+        }
     }
 }
